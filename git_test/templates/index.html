@@ -52,7 +52,7 @@
                         <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="form.html">Services</a>
                     </li>   
                     <li>
                         <a href="#contact">Contact</a>
@@ -84,20 +84,19 @@
   </div>
   <div class="form">
     <h2>Login to your account</h2>
-    <form>
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <button>Login</button>
+      <form action="/login" method="POST">
+      <input type="id" placeholder="id" name="id" />
+      <input type="password" placeholder="Password" name="password" />
+      <input type ="submit" placeholder="login"></input>
     </form>
   </div>
   <div class="form">
     <h2>Create an account</h2>
-    <form>
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <input type="email" placeholder="Email Address"/>
-      <input type="tel" placeholder="Phone Number"/>
-      <button>Register</button>
+      <form action="/sign" method="POST">
+      <input type="text" placeholder="nickname" name="nickname"/>
+      <input type="id" placeholder="id" name="id"/>
+      <input type="password" placeholder="password" name="password" />
+      <input type="submit" placeholder="Register"></input>
     </form>
   </div>
   <div class="cta"><a href="#">Forgot your password?</a></div>

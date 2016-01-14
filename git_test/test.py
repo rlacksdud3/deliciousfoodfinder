@@ -4,21 +4,26 @@ from flask import Flask, jsonify, render_template, request, make_response, sessi
 
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:time1541@localhost/DFF'
 app.config['SECRET_KEY'] = 'asldjalksjdklasd'
 admin = Admin(app)
 db = SQLAlchemy(app)
 
-class User(db.Model):
+migrate = Migrate(app, db)
 
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
+class User(db.Model):
     __tablename__ = "user"
     idx = db.Column(db.Integer, primary_key=True)
-    age = db.Column(db.Integer, default=20)
+    age = db.Column(db.Integer, default=18)
     name = db.Column(db.String(20))
     id = db.Column(db.String(20), unique=True)
     pw = db.Column(db.String(20))
@@ -41,7 +46,7 @@ def index():
 #################################### Login
 @app.route("/loginpage")
 def login_page():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -65,11 +70,11 @@ def login():
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
-    return render_template('index.html')
+    return render_template('login.html')
 
 @app.route("/signpage")
 def sign_page():
-    return render_template('sign.html')
+    return render_template('index.html')
 
 @app.route("/sign" ,  methods=['GET', 'POST'])
 def sign():
@@ -89,7 +94,7 @@ def sign():
     db.session.add(new)
     db.session.commit()
 
-    return render_template("login.html")
+    return render_template("index.html")
 
 def is_already_registered(id,pw, name):
     found = User.query.filter(
@@ -114,6 +119,16 @@ def is_already_registered(id,pw, name):
 def success():
     username = request.cookies.get('username')
     return "<h1>" + str(username)
+
+@app.route("/form.html")
+def form():
+    return  render_template("form.html")
+
+@app.route("/write")
+def write():
+       
+ 
+
 """
 @app.route("/search/<name>/<id>/<pw>")
 def search(name, id, pw, is_web=True):
