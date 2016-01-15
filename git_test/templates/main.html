@@ -1,0 +1,125 @@
+<!doctype hmlt>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Deliciousfoodfinder</title>
+     <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static',filename='css/test.css') }}">
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/animate.min.css') }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type=text/css href="{{ url_for('static',filename='css/creative.css') }}">
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Deliciousfoodfinder</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="form.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Deliciousfoodfinder</h1>
+<hr>
+                <p>맛집을 찾아보아요! 여기선 뭐가 맛있을까요?</p>
+                <button class="btn btn-primary btn-xl page-scroll" onclick="start()">Find Out More</button>
+            </div>
+        </div>
+    </header>
+    <img src="seoul_map.png" id = "seoul"></img>
+    <a href="#" id = "do">도봉구</a>
+    <a href="#" id = "book">강북구</a>
+    <a href="#" id = "won">노원구</a>
+    <a href="#" id = "eun">은평구</a>
+    <a href="#" id = "ro">종로구</a>
+    <a href="#" id = "sung">성북구</a>
+    <a href="#" id = "dae">동대문구</a>
+    <a href="#" id = "rang">중랑구</a>
+    <a href="#" id = "seo">서대문구</a>
+    <a href="#" id = "joog">중구</a>
+    <a href="#" id = "dong">성동구</a>
+    <a href="#" id = "jin">광진구</a>
+    <a href="#" id = "ma">마포구</a>
+    <a href="#" id = "dragon">용산구</a>
+    <a href="#" id = "ks">강서구</a>
+    <a href="#" id = "yang">양천구</a>
+    <a href="#" id = "po">영등포구</a>
+    <a href="#" id = "goo">구로구</a>
+    <a href="#" id = "gold">금천구</a>
+    <a href="#" id = "jak">동작구</a>
+    <a href="#" id = "aah">관악구</a>
+    <a href="#" id = "cho">서초구</a>
+    <a href="#" id = "nam">강남구</a>
+    <a href="#" id = "song">송파구</a>
+    <a href="#" id = "kd">강동구</a>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+      <script src="static/js/index.js"></script>
+ <!--     <script src="static/js/bootstrap.min.js"></script>  -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script>
+          $("#menu-toggle").click(function(e) {
+              e.preventDefault();
+              $("#wrapper").toggleClass("toggled");
+          });
+    </script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+
+    <!-- Custom Theme JavaScript -->
+<script src="/static/js/creative.js"></script>
+
+</body>
+
+</html>
+

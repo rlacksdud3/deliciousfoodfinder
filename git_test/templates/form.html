@@ -109,7 +109,7 @@ div.thumbnail .glyphicon-ok-circle{
 <body>
 
 
-<!-- ----------------------------------------------- -->
+<form action="/w_success" method="POST" >
 <div class="container jf-form">
 <input type="hidden" name="method" value="validateForm">
 <input type="hidden" id="serverValidationFields" name="serverValidationFields" value="">
@@ -119,7 +119,7 @@ div.thumbnail .glyphicon-ok-circle{
   <label class="control-label" for="c63">음식점 이름</label>
 
   
-<input type="text" class="form-control" id="c63" name="c63" value=""     />
+<input type="text" class="form-control" id="c63" name="title" value="" />
 
 
   
@@ -131,37 +131,16 @@ div.thumbnail .glyphicon-ok-circle{
   <label class="control-label" for="c85">리뷰</label>
 
   
-<textarea class="form-control" id="c85" name="c85" rows="15"   ></textarea>
+<textarea class="form-control" id="c85" name="textarea" rows="15"   ></textarea>
 
   
 </div>
 
-
-
-<div class="form-group c58 " data-cid="c58">
-  <label class="control-label" for="c58">Upload File</label>
-
-  <input type="file" class="form-control" id="c58" name="c58" value=""     />
-  
 </div>
-
-
-
-<div class="form-group submit c100 " data-cid="c100" style="position: relative;">
-  <label class="control-label sr-only" for="c100" style="display: block;">Submit Button</label>
-
-  <div class="progress" style="display: none; z-index: -1; position: absolute;">
-    <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%">
-    </div>
-  </div>
-  
-</div>
-
 <input type="submit"></input>
 
 </form>
 
-<!-- ----------------------------------------------- -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

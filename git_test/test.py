@@ -1,42 +1,25 @@
 from datetime import datetime
 
 from flask import Flask, jsonify, render_template, request, make_response, session
-
+from sqlalchemy.sql import (
+    func,
+)
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask.ext.script import Manager
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.migrate import MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
-
+from db import db,migrate
+from user import User,Comment,Board
+from admin import admin
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:time1541@localhost/DFF'
-app.config['SECRET_KEY'] = 'asldjalksjdklasd'
-admin = Admin(app)
-db = SQLAlchemy(app)
+app.config.from_pyfile("config.py")
+admin.init_app(app)
+db.init_app(app)
+migrate.init_app(app,db)
 
-migrate = Migrate(app, db)
 
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
-
-class User(db.Model):
-    __tablename__ = "user"
-    idx = db.Column(db.Integer, primary_key=True)
-    age = db.Column(db.Integer, default=18)
-    name = db.Column(db.String(20))
-    id = db.Column(db.String(20), unique=True)
-    pw = db.Column(db.String(20))
-    created = db.Column(db.DateTime, default=datetime.now)
-
-class Comment(db.Model):
-    __tablename__ = "comment"
-    idx = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(200))
-    who = db.Column(db.Integer, db.ForeignKey('user.idx'))
-
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Comment, db.session))
 
 @app.route("/")
 def index():
@@ -59,7 +42,7 @@ def login():
     ).first()
     if found:
         session['logged_in'] = True
-        resp = make_response(render_template('index.html')  )
+        resp = make_response(render_template('main.html')  )
         resp.set_cookie('username', username)
         print(session['logged_in'])
         return resp
@@ -70,7 +53,7 @@ def login():
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route("/signpage")
 def sign_page():
@@ -121,13 +104,39 @@ def success():
     return "<h1>" + str(username)
 
 @app.route("/form.html")
-def form():
-    return  render_template("form.html")
-
-@app.route("/write")
 def write():
+    return render_template("form.html")
+
+@app.route("/w_success",methods=['GET','POST'])
+def w_success():
+    board = Board()
+    title = request.form['title']
+    text = request.form['textarea']
+    board.title = title
+    board.text = text
+    board_id = board.idx
+    board.good = "0"
+    board.bad = "0"
+    board.count = "0"
+    board.num = db.session.query(
+            func.max(Board.num),
+    ).one()[0]
+    if board.num == None:
+        board.num = 0
+    else:
+        board.num += 1
+    db.session.add(board)
+    db.session.commit()
+    board1 = board.query.filter(
+    ).all()
+    return render_template("Board.html",board = board1,)
+
+@app.route("/<id>")
+def view(id):
+    board = Board()
+    board = board.query.get(id)
+    return render_template("view.html",post = board)
        
- 
 
 """
 @app.route("/search/<name>/<id>/<pw>")
