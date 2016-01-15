@@ -1,2 +1,2 @@
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:time1541@localhost/DFF'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:kcy@localhost/DFF'
 SECRET_KEY = 'asldjalksjdklasd'
