@@ -1,2 +1,2 @@
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:kcy@localhost/DFF'
+#SQLALCHEMY_DATABASE_URI = 'BACKEND+DRIVER://ID:PW@PORT/DB'
 SECRET_KEY = 'asldjalksjdklasd'
